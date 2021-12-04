@@ -14,6 +14,19 @@ Feature: cadastro finalizado com sucesso
     And preenche o campo Nome Completo com o valor "Alisson Lindo"
     And preenche o grau de escolaridade "Ensino Superior Incompleto"
     And preenche a data de nascimento com "01/04/1997"
+    And preenche o campo de email com "gustavoalisson@gmail.com"
+    And preenche o campo de natarulidade com "Brasileiro"
+    And preenche o campo de estado civil com "Solteiro"
+    And preenche o numero de dependentes com "0"
+    And preenche o campo de telefone com "81994789090"
+    And preenche o campo de cargo com "Analista de Sistemas"
+    And preenche o campo de CEP com "54330212"
+    And preenche o campo do numero da casa com "655"
+    And preenche o campo de complemento com "casa"
+
+    And clicamos no botão de salvar
+    Then deveria aparecer a mensagem de sucesso 
+
     
 
 
