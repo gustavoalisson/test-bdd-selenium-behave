@@ -1,5 +1,7 @@
 from behave import *
 from time import sleep
+from selenium.webdriver.common.keys import Keys
+
 
 # @given('iniciar o navegador Chrome')
 # def iniciarNavegador(context):
@@ -8,6 +10,11 @@ from time import sleep
 @given('Abrir pagina inicial do Gig B')
 def abrirPaginaInicial(context):
     context.driver.get('https://sistema-gigb.web.app')
+    
+@given('fazer login com usuario cadastrado para logar')
+def fazerLogin(context):
+    context.driver.find_element_by_xpath("//button[@class='btn btn-login']").click()
+    sleep(1)   
     
 @then('devo verificar a presenca da logo na pagina')
 def verificarLogo(context):
@@ -34,12 +41,12 @@ def fill_cpf(context, cpf):
     
 @then('preenche o campo Nome Completo com o valor "{nome}"')
 def fill_name(context, nome):
-    context.driver.find_element_by_xpath("//input[@name = 'Nome completo']").send_keys(nome)
+    context.driver.find_element_by_xpath("//input[@name = 'nome-completo']").send_keys(nome)
     sleep(1)
 
 @then('preenche o grau de escolaridade "{escolaridade}"')
 def fill_schooling(context, escolaridade):
-    context.driver.find_element_by_xpath("//div[@class =  'mat-select-value ng-tns-c50-4']").click()
+    context.driver.find_element_by_xpath("//*[@name = 'escolaridade']").click()
     context.driver.find_element_by_xpath(f"//span[contains(text(), '{escolaridade}')]").click()
     sleep(1)
     
@@ -66,35 +73,40 @@ def fill_marital_status(context, estado_civil):
     
 @then('preenche o numero de dependentes com "{dependente}"')
 def fill_dependents(context, dependente):
-    context.driver.find_element_by_xpath("//input[@name='']").send_keys(dependente)
+    context.driver.find_element_by_xpath("//input[@name='numero-dependentes']").send_keys(dependente)
     sleep(1)
     
 @then('preenche o campo de telefone com "{telefone}"')
 def fill_fone(context, telefone):
-    context.driver.find_element_by_xpath("//input[@name='Telefone']").send_keys(telefone)
+    context.driver.find_element_by_xpath("//input[@name='telefone']").send_keys(telefone)
     sleep(1)
     
 @then('preenche o campo de cargo com "{cargo}"')
 def fill_office(context, cargo):
-    context.driver.find_element_by_xpath("//input[@name='Cargo']").send_keys(cargo)
+    context.driver.find_element_by_xpath("//input[@name='cargo']").send_keys(cargo)
     sleep(1)
     
 @then('preenche o campo de CEP com "{cep}"')
 def fill_cep(context, cep):
-    context.driver.find_element_by_xpath("//input[@name='CEP']").send_keys(cep)
+    element_cep = context.driver.find_element_by_xpath("//input[@name='cep']").send_keys(cep, Keys.TAB)
+    # element_cep.send_keys()
+    sleep(4)
     
 @then('preenche o campo do numero da casa com "{numero}"')
 def fill_number(context, numero):
-    context.driver.find_element_by_xpath("//input[@name='CEP']").send_keys(numero)
+    context.driver.find_element_by_xpath("//input[@name='numero']").send_keys(numero)
+    sleep(1)
     
-@then('preenche o campo de complemento com "{complementp}"')
+@then('preenche o campo de complemento com "{complemento}"')
 def fill_complement(context, complemento):
-    context.driver.find_element_by_xpath("//input[@name='Complemento']").send_keys(complemento)
+    context.driver.find_element_by_xpath("//input[@name='complemento']").send_keys(complemento)
+    sleep(1)
 
 @then('clicamos no botão de salvar')
 def click_button_save(context):
-    context.driver.find_element_by_xpath("//div[@class = 'mat-focus-indicator btn mat-stroked-button mat-button-base'").click()
+    context.driver.find_element_by_xpath("//button[@name= 'salvar']").click()
+    sleep(4)
                                          
-@then('deveria aparecer a mensagem de sucesso')
-def message_sucess(context):
-    pass        
+# @then('deveria aparecer a mensagem de sucesso')
+# def message_sucess(context):
+#     pass        

@@ -3,6 +3,7 @@ Feature: cadastro finalizado com sucesso
   Scenario: Verificar presenca de logo home page
     # Given iniciar o navegador Chrome
     Given Abrir pagina inicial do Gig B
+    And fazer login com usuario cadastrado para logar
     Then devo verificar a presenca da logo na pagina
     # And fechar navegador
 
@@ -25,10 +26,4 @@ Feature: cadastro finalizado com sucesso
     And preenche o campo de complemento com "casa"
 
     And clicamos no botão de salvar
-    Then deveria aparecer a mensagem de sucesso 
-
-    
-
-
-
-# Dado , Quando , Então, E    
+    # Then deveria aparecer a mensagem de sucesso 

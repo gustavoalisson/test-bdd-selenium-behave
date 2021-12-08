@@ -1,1 +1,1 @@
-# test-bdd-selenium-brehave
+# gigb-test-bdd
